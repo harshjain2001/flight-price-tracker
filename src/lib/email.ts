@@ -50,10 +50,12 @@ export async function sendMatchEmail(matches: FlightMatch[]): Promise<boolean> {
 
   const destCodes = [...new Set(matches.map((m) => m.destination))].join(", ");
   const rows = matches.map(formatMatchRow).join("");
-  const subject = `${matches.length} flight(s) ${ORIGIN}→[${destCodes}] at or below ₹${MAX_PRICE.toLocaleString("en-IN")}`;
+  const priceLabel = `₹${MAX_PRICE.toLocaleString("en-IN")}`;
+  const subject = `${matches.length} matching fare(s) ${ORIGIN}→[${destCodes}] at or below ${priceLabel}`;
 
   const html = `
-    <p>Found <strong>${matches.length}</strong> day(s) from <strong>${ORIGIN}</strong> at or below <strong>₹${MAX_PRICE.toLocaleString("en-IN")}</strong>.</p>
+    <p>Found <strong>${matches.length}</strong> matching fare(s) from <strong>${ORIGIN}</strong> to <strong>[${escapeHtml(destCodes)}]</strong> at or below <strong>${priceLabel}</strong>.</p>
+    <p style="color:#666;font-size:13px;">Each row is one destination + departure date (cheapest fare that day).</p>
     <table style="border-collapse:collapse;width:100%;max-width:720px;">
       <thead>
         <tr>
