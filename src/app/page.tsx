@@ -1,3 +1,4 @@
+import { RunCronButton } from "@/components/RunCronButton";
 import {
   CURRENCY,
   DEPART_DATE_END,
@@ -61,20 +62,14 @@ export default function Home() {
           </div>
         </dl>
 
+        <RunCronButton />
+
         <p className="mt-8 text-xs text-zinc-500">
           Configure trip and alert settings via environment variables (see{" "}
           <code className="rounded bg-zinc-100 px-1 py-0.5 dark:bg-zinc-800">
             README.md
           </code>
-          ). Manual run:{" "}
-          <code className="rounded bg-zinc-100 px-1 py-0.5 dark:bg-zinc-800">
-            GET /api/cron
-          </code>{" "}
-          with{" "}
-          <code className="rounded bg-zinc-100 px-1 py-0.5 dark:bg-zinc-800">
-            Authorization: Bearer CRON_SECRET
-          </code>
-          .
+          ).
         </p>
       </main>
     </div>
