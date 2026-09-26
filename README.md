@@ -85,7 +85,9 @@ Trigger the job manually:
 curl -s -H "Authorization: Bearer YOUR_CRON_SECRET" http://localhost:3000/api/cron | jq
 ```
 
-To confirm email delivery, set `DRY_RUN=false` and a high enough `MAX_PRICE` so fares qualify, then run the curl again.
+Or open the home page, paste `CRON_SECRET`, and click **Check prices now**.
+
+To confirm email delivery, set `DRY_RUN=false` and a high enough `MAX_PRICE` so fares qualify, then run the check again.
 
 ## Deploy on Vercel
 
